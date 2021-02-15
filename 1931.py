@@ -25,3 +25,24 @@ while i < (len(conv) - 1):
             break
 
 print(count)
+
+''' 개선된 코드 :
+import sys
+N = int(input())
+conv = []
+for i in range(N):
+    conv.append(list(map(int, sys.stdin.readline().split())))
+
+conv.sort(key = lambda x:(x[1], x[0]))
+
+start = conv[0][0]
+end = conv[0][1]
+count = 1
+
+for y in range(1, N):
+    if conv[y][0] >= end:
+        count += 1
+        end = conv[y][1]       
+
+print(count)
+'''
