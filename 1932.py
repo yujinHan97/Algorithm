@@ -7,7 +7,7 @@
 '''
 N = int(input())
 tri = []
-dp = [[0] *N for i in range(N)]
+dp = [[0] *N for i in range(N)] # 삼각형의 합을 저장할 변수
 for i in range(N):
     tri.append(list(map(int, input().split())))
     if i == 0:
@@ -15,14 +15,16 @@ for i in range(N):
     
 for i in range(1, N):
     for j in range(i+1):
-        if j == 0:
+        if j == 0: # 왼쪽 변인 경우, 바로 위에 있는 합과 삼각형 자기 자신의 값을 더하기
             dp[i][j] = dp[i-1][j] + tri[i][j]
         
-        if i == j:
+        if i == j: # 오른쪽 변인 경우, 바로 위에 있는 합과 삼각형 자기 자신의 값을 더하기
             dp[i][j] = dp[i-1][j] + tri[i][j]
 
-        dp[i][j] = max(dp[i-1][j-1]+tri[i][j], dp[i-1][j] +tri[i][j])
+        # 변이 아닌, 삼각형 안쪽의 경우 바로 위에 있는 합의 최대값을 찾아서 자시 자신과 값을 더한다
+        dp[i][j] = max(dp[i-1][j-1], dp[i-1][j]) +tri[i][j]
 
+# dp는 합이 저장된 변수인데, 그 중 최댓값을 찾기
 max_value = 0
 for i in range(N):
     for j in range(i+1):
