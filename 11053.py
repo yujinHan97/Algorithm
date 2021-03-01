@@ -15,8 +15,8 @@ dp[0] = 0
 for i in range(2, N+1):
     maxdp = 0
     for j in range(i-1, 0, -1):
-        if A[i] > A[j]:
-            if maxdp < dp[j]:
+        if A[i] > A[j]: # i-1번째 이하의 수에 대해서, 현재 값보다 작으면, 그 중에서 maxdp값을 찾는다
+            if maxdp < dp[j]: 
                 maxdp = dp[j]            
     dp[i] += maxdp
 
