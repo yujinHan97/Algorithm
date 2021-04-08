@@ -32,3 +32,33 @@ if len(index) == 0: # 그런 합을 만들지 못하는 경우
     print(0)
 else:
     print(min(index))
+
+'''
+# 더 좋은 코드 추가 
+import sys
+input = sys.stdin.readline
+N, S = map(int, input().split())
+A = list(map(int, input().split()))
+
+end = 0
+sum = A[0] # sum을 A[0]의 값으로 초기화
+
+index = sys.maxsize
+for start in range(N):
+   while sum < S and end < N: # S보다 작은 경우에 계속 end를 이동
+       end += 1
+       
+       if end == N:
+           break
+       sum += A[end]
+       
+   if sum >= S: # sum이 S 이상인 경우에, index를 최소값으로 변경
+       index = min(index, end-start+1)
+    
+   sum -= A[start]
+
+if index == sys.maxsize: # 그런 합을 만들지 못하는 경우
+    print(0)
+else:
+    print(index)
+'''
