@@ -16,3 +16,29 @@ for i in range(M):
     a = bisect_left(cards, num[i])
     b = bisect_right(cards, num[i])
     print(b-a, end = ' ')
+    
+'''
+dict를 이용해서 푸는 방법도 존재
+
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+cards = list(map(int, input().split()))
+
+dict = {}
+for i in range(N):
+    if cards[i] in dict.keys():
+        dict[cards[i]] += 1
+    else:
+        dict[cards[i]] = 1
+
+M = int(input())
+arr = list(map(int, input().split()))
+
+for i in range(M):
+    if arr[i] in dict.keys():
+        print(dict[arr[i]], end = ' ')
+    else:
+        print(0, end = ' ')
+'''
