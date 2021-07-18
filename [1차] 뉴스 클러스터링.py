@@ -1,3 +1,25 @@
+# 더 좋은 코드 
+def solution(str1, str2):
+    A, B = [], []
+    answer = 0
+
+    A = [str1[i:i+2].lower() for i in range(len(str1) -1) if str1[i:i+2].isalpha()]
+    B = [str2[i:i+2].lower() for i in range(len(str2) -1) if str2[i:i+2].isalpha()]
+
+    intersect, union = 0, 0
+    # A와 B를 확장해서 집합으로 만들고 교집합, 합집합 구함
+    for element in set(A+B):
+        intersect += min(A.count(element), B.count(element))
+        union += max(A.count(element), B.count(element))
+       
+    if union == 0:
+        answer = 1
+    else:
+        answer = intersect / union
+
+    return int(answer * 65536)
+
+# 내 코드 --> dictionary 사용해서 교집합 개수 구함
 def solution(str1, str2):
     A, B = [], []
     answer = 0
