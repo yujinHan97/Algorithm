@@ -1,0 +1,9 @@
+/* 
+  HOUR() 함수 -> DATE 형에서 '시' 갖고오기
+  SELECT 문에서 ALIAS를 붙인 뒤에, 아래 코드에서 해당 ALIAS 사용하기 
+*/
+SELECT HOUR(DATETIME) AS HOUR, COUNT(*) AS COUNT # HOUR를 ALIAS 선언하고 이 HOUR를 아래에서 자유롭게 사용 가능
+FROM ANIMAL_OUTS 
+GROUP BY HOUR
+HAVING HOUR BETWEEN 9 AND 19
+ORDER BY HOUR
