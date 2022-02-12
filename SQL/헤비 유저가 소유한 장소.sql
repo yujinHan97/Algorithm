@@ -1,0 +1,12 @@
+/* 
+  서브 쿼리로 HOST_ID를 갖고 와서 해당 HOST_ID인 데이터를 모두 나열하도록 구현
+*/
+SELECT *
+FROM PLACES
+WHERE HOST_ID IN (
+    SELECT HOST_ID
+    FROM PLACES
+    GROUP BY HOST_ID
+    HAVING COUNT(HOST_ID) >= 2
+)
+ORDER BY ID
