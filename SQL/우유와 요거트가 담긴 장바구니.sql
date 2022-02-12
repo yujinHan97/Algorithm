@@ -1,0 +1,11 @@
+/* 
+  서브 쿼리로 Yogurt가 담긴 ID를 갖고 해당 ID에서 Milk가 담겼으면 출력
+*/
+SELECT DISTINCT CART_ID
+FROM CART_PRODUCTS
+WHERE NAME = 'Milk' AND CART_ID IN (
+    SELECT DISTINCT CART_ID 
+    FROM CART_PRODUCTS 
+    WHERE NAME = 'Yogurt'
+)
+ORDER BY CART_ID
