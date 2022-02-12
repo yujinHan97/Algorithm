@@ -2,3 +2,4 @@
 2. GROUP BY-04.sql - 입양 시각 구하기(2)
 3. String, Date-04.sql - 오랜 기간 보호한 동물(2)
 4. String, Date-05.sql - DATETIME에서 DATE로 형 변환
+5. 우유와 요거트가 담긴 장바구니.sql - 우유와 요거트가 담긴 장바구니
