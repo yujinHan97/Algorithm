@@ -32,3 +32,42 @@ def solution(n, computers):
         find_parent(parent, i)
     
     return len(set(parent[1:]))
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'''
+    알고리즘:
+    1. BFS 이용해서, 방문하지 않았던 곳에서 연결된 곳은 모두 방문 처리
+    2. bfs 호출할 때마다 연결된 네트워크가 있다는 의미
+'''
+from collections import deque
+def bfs(node, graph, visited):
+    q = deque([node])
+    visited[node] = True
+    
+    while q:
+        now = q.popleft()
+        for new_node in graph[now]:
+            if visited[new_node] == False:
+                visited[new_node] = True
+                q.append(new_node)
+                
+def solution(n, computers):
+    visited = [False] * (n+1)
+    graph = [[] * (n+1) for i in range(n+1)]
+    for i in range(len(computers)):
+        for j in range(len(computers[i])):
+            if i == j:
+                continue
+                
+            if computers[i][j] == 1:
+                graph[i+1].append(j+1)
+
+    count = 0
+    for i in range(1, n+1):
+        # print(visited)
+        if visited[i] == False:
+            bfs(i, graph, visited)
+            count += 1
+        
+    return count
+    
