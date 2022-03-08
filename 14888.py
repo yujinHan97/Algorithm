@@ -37,3 +37,59 @@ dfs(1, nums[0], ops[0], ops[1], ops[2], ops[3])
 print(maximum)
 print(minimum)
 
+----------------------------------------------------------------------------------------------------------------
+'''
+    알고리즘: (Brute Force 알고리즘으로 시간은 느리지만 맞춤)
+    1. 모든 연산자의 순열을 생성 (permutations)
+    2. zip 연산자로 숫자와 연산자의 계산을 하면서, 최대값과 최솟값 찾기
+'''
+import sys
+from itertools import permutations
+INF = int(1e9)
+input = sys.stdin.readline
+
+n = int(input())
+arr = list(map(int, input().split()))
+op = list(map(int, input().split()))
+ops = []
+for idx, num in enumerate(op):
+  if num == 0:
+    continue
+  else:
+    if idx == 0:
+      operation = '+'
+    elif idx == 1:
+      operation = '-'  
+    elif idx == 2:
+      operation = '*'
+    elif idx == 3:
+      operation = '//'
+
+  for i in range(num):
+    ops.append(operation)
+
+op_p = list(permutations(ops, n-1))
+
+max_result, min_result = -INF, INF
+for i in range(len(op_p)):
+  result = arr[0]
+  for num, opp in zip(arr[1:], op_p[i]):
+    if opp == '+':
+      result += num
+    elif opp == '-':
+      result -= num
+    elif opp == '*':
+      result *= num
+    elif opp == '//':
+      if result < 0:
+        result = -result
+        result = result // num
+        result = -result
+      else:
+        result //= num
+    
+  max_result = max(max_result, result)
+  min_result = min(min_result, result)
+
+print(max_result)
+print(min_result)
