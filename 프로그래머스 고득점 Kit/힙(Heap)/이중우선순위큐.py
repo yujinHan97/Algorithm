@@ -37,3 +37,44 @@ def solution(operations):
         answer = [0, 0]
         
     return answer
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+'''
+    알고리즘:
+    1. 최소힙, 최대힙 각각을 사용하여 구현 => 넣고 뺄때 항상 최소힙, 최대힙 동기화 해야함
+    2. I일때는 최소힙엔 그대로, 최대힙엔 -를 붙여 넣기
+    3. 최댓값을 뺄때는, 최대힙에서 -붙인 값을 저장하고 그 값을 최소힙에서도 빼기
+    4. 최솟값을 뺄때는, 최소힙에서 -붙인 값을 저장하고 그 값을 최대힙에서도 빼기
+'''
+import heapq
+
+def solution(operations):
+    answer = []
+    
+    min_h, max_h = [], []
+    for operation in operations:
+        op = operation.split()
+        
+        if op[0] == 'I':
+            num = int(op[1])
+            heapq.heappush(min_h, num)
+            heapq.heappush(max_h, -num)
+        else:   
+            if not min_h:
+                continue
+            else:
+                if op[1] == '-1':
+                    num = heapq.heappop(min_h) 
+                    # 최대힙에는 해당 값이 -붙어진 상태로 존재하니까
+                    max_h.remove(-num)
+                else:
+                    # pop한 값에 -를 붙이고, 최소힙에서 그 값으로 존재하니까 
+                    num = -heapq.heappop(max_h)
+                    min_h.remove(num)
+                    
+    if min_h:
+        answer = [-max_h[0], min_h[0]]
+    else:
+        answer = [0, 0]
+        
+    return answer
