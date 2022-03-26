@@ -6,7 +6,7 @@
 def solution(numbers):
     answer = ''
     
-    # TC 11번
+    # TC 11번 - (문제에는 명시 X)
     if sum(numbers) == 0:
         return '0'
     
