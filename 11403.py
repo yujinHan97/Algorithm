@@ -2,6 +2,7 @@
     알고리즘:
     1. 모든 정점에 대해서 BFS 수행
     2. BFS 수행 완료 후, 각 정점에서 갈 수 있는 것들 (TRUE)인 애들만 1로 처리
+    (다른 풀이 보니 플로이드 워셜도 있음 -> O(n^3)이라 BFS가 나을수도)
 '''
 from collections import deque
 
