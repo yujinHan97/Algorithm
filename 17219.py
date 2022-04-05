@@ -1,7 +1,7 @@
 '''
     알고리즘:
     1. 중복된 사이트는 없으니까, 사전 자료형 사용
-    2. url에 해당하는 pwd 출력하면 된다
+    2. url에 해당하는 pwd 출력하면 된다.
 '''
 import sys
 input = sys.stdin.readline
