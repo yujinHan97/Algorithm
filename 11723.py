@@ -1,7 +1,8 @@
 '''
     알고리즘:
-    1. 집합 추가 연산 -> add()
-    2. 집합에서 삭제 연산 -> remove(), discard()
+    1. 집합 자료구조 선언 -> set()
+    2. 집합 추가 연산 -> add()
+    3. 집합에서 삭제 연산 -> remove(), discard()
        remove(item) : item에 해당하는 원소를 제거하고, 없으면 Keyerror 발생
        discard(item) : item에 해당하는 원소를 제거하고, 없어도 에러를 발생하지 않음
 '''
