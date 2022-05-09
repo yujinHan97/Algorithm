@@ -1,6 +1,3 @@
-'''
-    11651 좌표 정렬하기2
-'''
 import sys
 
 N = int(input())
